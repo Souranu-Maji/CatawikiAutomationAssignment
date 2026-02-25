@@ -1,0 +1,5 @@
+Pages/homePage.class
+StepDefinitions/TestRunner.class
+Pages/cookiesBar.class
+Pages/searchResultsPage.class
+StepDefinitions/SearchSteps.class
