@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import Pages.cookiesBar;
 import Pages.homePage;
+import Pages.lotProductPage;
 import Pages.searchResultsPage;
 
 import java.time.Duration;
@@ -23,11 +24,13 @@ public class SearchSteps {
     
     private String driverPath = System.getProperty("user.dir") + "/src/test/resources/Drivers/chromedriver.exe";
     private static final Logger log = LogManager.getLogger(SearchSteps.class);
+    private int sleepTimer = 2;
 
     WebDriver driver = new ChromeDriver();
     homePage homePage = new homePage(driver);
     cookiesBar cookiesBar = new cookiesBar(driver);
     searchResultsPage searchResultsPage = new searchResultsPage(driver);
+    lotProductPage lotProductPage = new lotProductPage(driver);
 
     @Given("User is on the Catawiki homepage")
     public void User_is_on_the_Catawiki_homepage() throws InterruptedException {
@@ -36,7 +39,7 @@ public class SearchSteps {
         
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.get("https://www.catawiki.com/");
-        Thread.sleep(2000); // Wait for the page to load completely
+        Thread.sleep(Duration.ofSeconds(sleepTimer)); // Wait for the page to load completely
         driver.manage().window().maximize();
 
         // Handle the cookie consent bar
@@ -56,15 +59,15 @@ public class SearchSteps {
     }
 
     @When("Verify the designated {string} page details")
-    public void Verify_the_designated_page_details(String s) {
+    public void Verify_the_designated_page_details(String searchString) {
         WebDriverWait waitForSearchResultsPage = new WebDriverWait(driver, Duration.ofSeconds(10));
         waitForSearchResultsPage.until(ExpectedConditions.visibilityOf(searchResultsPage.searchResultsTitle));
         Assert.assertTrue("Page title does not contain the search term", searchResultsPage.searchResultsTitle.getText().toLowerCase()
-        .contains(s));
+        .contains(searchString));
     }
 
 
-    @Then("Click on {string} lot in search results page and verify")
+    @Then("Click on Lot {string} in search results page and verify")
     public void Click_on_lot_in_search_results_page_and_verify(String s) {
         System.out.println("Total lots found on first Seearch Results Page:" +searchResultsPage.getProductsCountPerPage());
         if(searchResultsPage.getProductsCountPerPage() > 0) {
@@ -75,7 +78,7 @@ public class SearchSteps {
         }
     }
 
-    @Then("Validate lot details with spcified attributes")
+    @Then("Validate Lot details with spcified attributes")
     public void Validate_lot_details_with_spcified_attributes() throws InterruptedException{
         // Write code here that turns the phrase above into concrete actions
         WebDriverWait waitForLotDetailsPage = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -85,12 +88,18 @@ public class SearchSteps {
         log.info("Favorite Counter: " +searchResultsPage.favoriteCounter.getText());
         log.info("Current Bid Amount: " +searchResultsPage.currentBidAmount.getText());
 
-        Thread.sleep(Duration.ofSeconds(3));
+        Thread.sleep(Duration.ofSeconds(sleepTimer));
+    }
+
+    @Then("Check for Age restricted content warning with {string}")
+    public void Check_for_Age_restricted_content_warning(String permission) throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        Thread.sleep(Duration.ofSeconds(sleepTimer));
+        System.out.println("Check:"+permission);
+        lotProductPage.checkForAgeRestrictedContentWarning(permission);
+        Thread.sleep(Duration.ofSeconds(sleepTimer));
         driver.close();
         driver.quit();
     }
-
-
-
 
 }

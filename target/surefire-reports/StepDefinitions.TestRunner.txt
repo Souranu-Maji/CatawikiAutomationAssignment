@@ -1,11 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: StepDefinitions.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 35.94 s <<< FAILURE! -- in StepDefinitions.TestRunner
-feature to search for an item on the Catawiki website.Search for an auction item #3 -- Time elapsed: 9.548 s <<< FAILURE!
-java.lang.AssertionError: Page title does not contain the search term
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at StepDefinitions.SearchSteps.Verify_the_designated_page_details(SearchSteps.java:62)
-	at ✽.Verify the designated "XYZ@!@#" page details(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/searching.feature:6)
-
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 68.54 s -- in StepDefinitions.TestRunner

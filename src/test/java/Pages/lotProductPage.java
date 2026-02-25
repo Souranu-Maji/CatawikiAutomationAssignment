@@ -1,0 +1,48 @@
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import StepDefinitions.SearchSteps;
+
+public class lotProductPage {
+
+    WebDriver driver;
+    private static final Logger log = LogManager.getLogger(SearchSteps.class);
+
+    public lotProductPage(WebDriver driver){
+        this.driver = driver;
+    }
+    
+    By warningFlag = By.cssSelector("h1[class*='heading']");
+    By proceedToAuctionBtn = By.cssSelector("div[class*='LotExplicitContentModal']>button");
+    By backToHomePageLnk = By.xpath("//div[contains(@class,'LotExplicitContentModal')]//child::span[contains(text(),'Back to Homepage')]//ancestor::a");
+
+
+    public void checkForAgeRestrictedContentWarning(String permission){
+        try {
+            if(driver.findElement(warningFlag) != null){
+                if("Yes".equals(permission))
+                {
+                    log.warn(driver.findElement(warningFlag).getText() + " Found !!! Proceeding with Caution...");
+                    driver.findElement(proceedToAuctionBtn).click();
+                }
+                else{
+                    log.warn(driver.findElement(warningFlag).getText() + " Found !!! Going Back to Homepage...");
+                    driver.findElement(backToHomePageLnk).click();
+                }
+                
+            }
+        } catch (NoSuchElementException error) {
+            log.info("Explicit Content Warning Not Present...");
+            log.warn(error.getMessage());
+        } finally{
+            System.out.println("Proceeding");
+        }
+
+    }
+
+}
