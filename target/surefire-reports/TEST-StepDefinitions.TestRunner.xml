@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="StepDefinitions.TestRunner" time="68.537" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="StepDefinitions.TestRunner" time="234.415" tests="10" errors="1" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/souranumaji/Documents/com.catawiki.automation/target/surefire/surefirebooter-20260225135717143_3.jar /Users/souranumaji/Documents/com.catawiki.automation/target/surefire 2026-02-25T13-57-17_116-jvmRun1 surefire-20260225135717143_1tmp surefire_0-20260225135717143_2tmp"/>
+    <property name="sun.java.command" value="/Users/souranumaji/Documents/com.catawiki.automation/target/surefire/surefirebooter-20260226143043765_3.jar /Users/souranumaji/Documents/com.catawiki.automation/target/surefire 2026-02-26T14-30-43_736-jvmRun1 surefire-20260226143043765_1tmp surefire_0-20260226143043765_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="TestRunner"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/souranumaji/Documents/com.catawiki.automation/target/surefire/surefirebooter-20260225135717143_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/souranumaji/Documents/com.catawiki.automation/target/surefire/surefirebooter-20260226143043765_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="25.0.2"/>
@@ -60,128 +60,234 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="Search for auction item after switching language" classname="feature to check language consistency in website while searching products" time="7.47">
+  <testcase name="Search for auction item after switching language #1" classname="feature to check language consistency in website while searching products" time="9.064">
     <system-out><![CDATA[
-Scenario Outline: Search for auction item after switching language # src/test/resources/features/languageAcceptance.feature:3
-Launching the browser and navigating to the Catawiki homepage
-Home Page Title: https://www.catawiki.com/en
-  ✔ Given User is on the Catawiki homepage                         # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+@Smoke_Test
+Scenario Outline: Search for auction item after switching language         # src/test/resources/features/languageAcceptance.feature:12
+14:30:45.378 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:30:51.458 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                 # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:30:51.515 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User has Selected GERMAN
+14:30:52.079 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - WebURL changed to: https://www.catawiki.com/de
+  ✔ When User change language to "GERMAN" and validate the language change # StepDefinitions.SearchSteps.User_change_language_to_and_validate_the_language_change(java.lang.String)
+14:30:52.106 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: train
+  ✔ Then User searches for "train"                                         # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
 ]]></system-out>
-    <system-err><![CDATA[Feb 25, 2026 1:57:18 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err><![CDATA[Feb 26, 2026 2:30:45 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
 ]]></system-err>
   </testcase>
-  <testcase name="Search for an auction item #1" classname="feature to search for an item on the Catawiki website" time="15.535">
+  <testcase name="Search for auction item after switching language #2" classname="feature to check language consistency in website while searching products" time="6.52">
     <system-out><![CDATA[
-Scenario Outline: Search for an auction item                # src/test/resources/features/productSearching.feature:13
-Launching the browser and navigating to the Catawiki homepage
-Home Page Title: https://www.catawiki.com/en
-  ✔ Given User is on the Catawiki homepage                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
-User searches for: train
-  ✔ When User searches for "train"                          # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
-  ✔ And Verify the designated "train" page details          # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
-Total lots found on first Seearch Results Page:24
-  ✔ Then Click on Lot "2" in search results page and verify # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
-13:57:35.235 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Märklin H0, 00 - TM 800/366/306/2/330/1 - Train set (4) - Freight train, early 1950s - DB
-13:57:35.241 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 15
-13:57:35.252 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: € 20
-  ✔ And Validate Lot details with spcified attributes       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
-Check:Yes
-13:57:40.278 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Explicit Content Warning Not Present...
-13:57:40.278 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - no such element: Unable to locate element: {"method":"css selector","selector":"h1[class*='heading']"}
-  (Session info: chrome=145.0.7632.110)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.40.0', revision: 'b3333f1'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.3', java.version: '25.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [8d0ab4ee19f39fb81ad9d43defeb8242, findElement {using=css selector, value=h1[class*='heading']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 145.0.7632.110, chrome: {chromedriverVersion: 145.0.7632.77 (da516187054a..., userDataDir: /var/folders/jt/85hkxdq52sq...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64349}, goog:processID: 12802, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:64349/devtoo..., se:cdpVersion: 145.0.7632.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 8d0ab4ee19f39fb81ad9d43defeb8242
-Proceeding
-  ✔ And Check for Age restricted content warning with "Yes" # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+@Smoke_Test
+Scenario Outline: Search for auction item after switching language          # src/test/resources/features/languageAcceptance.feature:13
+14:30:53.868 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:30:58.225 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:30:58.283 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User has Selected ENGLISH
+14:30:58.660 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - WebURL changed to: https://www.catawiki.com/en
+  ✔ When User change language to "ENGLISH" and validate the language change # StepDefinitions.SearchSteps.User_change_language_to_and_validate_the_language_change(java.lang.String)
+14:30:58.694 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: Tintin
+  ✔ Then User searches for "Tintin"                                         # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
 ]]></system-out>
-    <system-err><![CDATA[Feb 25, 2026 1:57:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err><![CDATA[Feb 26, 2026 2:30:53 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
 ]]></system-err>
   </testcase>
-  <testcase name="Search for an auction item #2" classname="feature to search for an item on the Catawiki website" time="16.656">
+  <testcase name="Search for auction item after switching language #3" classname="feature to check language consistency in website while searching products" time="6.631">
+    <error message="No enum constant Enums.language.JAPANESE" type="java.lang.IllegalArgumentException"><![CDATA[java.lang.IllegalArgumentException: No enum constant Enums.language.JAPANESE
+	at java.base/java.lang.Enum.valueOf(Enum.java:293)
+	at Enums.language.valueOf(language.java:3)
+	at Pages.homePage.validateChangedLanguageOnWebpage(homePage.java:75)
+	at Pages.homePage.changeUserLanguageAndValidateChange(homePage.java:71)
+	at StepDefinitions.SearchSteps.User_change_language_to_and_validate_the_language_change(SearchSteps.java:138)
+	at ✽.User change language to "JAPANESE" and validate the language change(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/languageAcceptance.feature:6)
+]]></error>
     <system-out><![CDATA[
-Scenario Outline: Search for an auction item                # src/test/resources/features/productSearching.feature:14
-Launching the browser and navigating to the Catawiki homepage
-Home Page Title: https://www.catawiki.com/en
-  ✔ Given User is on the Catawiki homepage                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
-User searches for: car
-  ✔ When User searches for "car"                            # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
-  ✔ And Verify the designated "car" page details            # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
-Total lots found on first Seearch Results Page:24
-  ✔ Then Click on Lot "3" in search results page and verify # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
-13:57:51.886 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Georgia - Toy car 2006 Lamborghini miniature car collection by Georgia - 2000-2010 - Japan
-13:57:51.904 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 3
-13:57:51.916 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: € 1
-  ✔ And Validate Lot details with spcified attributes       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
-Check:No
-13:57:56.938 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Explicit Content Warning Not Present...
-13:57:56.938 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - no such element: Unable to locate element: {"method":"css selector","selector":"h1[class*='heading']"}
-  (Session info: chrome=145.0.7632.110)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.40.0', revision: 'b3333f1'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.3', java.version: '25.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [805a6df8bfe2cc11a85ec50e8a1bcf64, findElement {using=css selector, value=h1[class*='heading']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 145.0.7632.110, chrome: {chromedriverVersion: 145.0.7632.77 (da516187054a..., userDataDir: /var/folders/jt/85hkxdq52sq...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64407}, goog:processID: 12864, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:64407/devtoo..., se:cdpVersion: 145.0.7632.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 805a6df8bfe2cc11a85ec50e8a1bcf64
-Proceeding
-  ✔ And Check for Age restricted content warning with "No"  # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+@Smoke_Test @Negative_Test
+Scenario Outline: Search for auction item after switching language           # src/test/resources/features/languageAcceptance.feature:18
+14:31:00.124 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:31:06.141 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                   # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:31:06.186 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Native Language NOT supported by website
+  ✘ When User change language to "JAPANESE" and validate the language change # StepDefinitions.SearchSteps.User_change_language_to_and_validate_the_language_change(java.lang.String)
+        java.lang.IllegalArgumentException: No enum constant Enums.language.JAPANESE
+        	at java.base/java.lang.Enum.valueOf(Enum.java:293)
+        	at Enums.language.valueOf(language.java:3)
+        	at Pages.homePage.validateChangedLanguageOnWebpage(homePage.java:75)
+        	at Pages.homePage.changeUserLanguageAndValidateChange(homePage.java:71)
+        	at StepDefinitions.SearchSteps.User_change_language_to_and_validate_the_language_change(SearchSteps.java:138)
+        	at ✽.User change language to "JAPANESE" and validate the language change(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/languageAcceptance.feature:6)
+  ↷ Then User searches for "car"                                             # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
 ]]></system-out>
-    <system-err><![CDATA[Feb 25, 2026 1:57:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err><![CDATA[Feb 26, 2026 2:31:00 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
 ]]></system-err>
   </testcase>
-  <testcase name="Search for an auction item #3" classname="feature to search for an item on the Catawiki website" time="14.078">
+  <testcase name="Search for an auction item with valid product name and verify the details #1" classname="feature to search for an item on the Catawiki website" time="36.04">
     <system-out><![CDATA[
-Scenario Outline: Search for an auction item                # src/test/resources/features/productSearching.feature:15
-Launching the browser and navigating to the Catawiki homepage
-Home Page Title: https://www.catawiki.com/en
-  ✔ Given User is on the Catawiki homepage                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
-User searches for: magazine
-  ✔ When User searches for "magazine"                       # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
-  ✔ And Verify the designated "magazine" page details       # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
-Total lots found on first Seearch Results Page:24
-  ✔ Then Click on Lot "5" in search results page and verify # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
-13:58:05.952 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Playboy magazines - 2002-2008
-13:58:05.957 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 28
-13:58:05.967 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: € 110
-  ✔ And Validate Lot details with spcified attributes       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
-Check:Yes
-13:58:10.996 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Warning: Explicit content Found !!! Proceeding with Caution...
+@Smoke_Test @Positive_Test
+Scenario Outline: Search for an auction item with valid product name and verify the details # src/test/resources/features/productSearching.feature:15
+14:31:07.029 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:31:12.991 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:31:12.993 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: train
+  ✔ When User searches for "train"                                                          # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "train" page details                                          # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:31:18.968 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Total lots found on first Seearch Results Page:24
+  ✔ Then Click on Lot "2" in search results page and verify                                 # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
+14:31:20.161 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Roco H0 - 4134 - Train unit (1) - S-Bahn train set BR 420 - DB
+14:31:23.175 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 35
+14:31:23.187 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: 91
+  ✔ And Validate Lot details with spcified attributes                                       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
+14:31:27.217 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Explicit Content Warning Not Present...
 Proceeding
-  ✔ And Check for Age restricted content warning with "Yes" # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+  ✔ And Check for Age restricted content warning with "Yes"                                 # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
 ]]></system-out>
-    <system-err><![CDATA[Feb 25, 2026 1:57:57 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err><![CDATA[Feb 26, 2026 2:31:06 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
 ]]></system-err>
   </testcase>
-  <testcase name="Search for an auction item #4" classname="feature to search for an item on the Catawiki website" time="14.591">
+  <testcase name="Search for an auction item with valid product name and verify the details #2" classname="feature to search for an item on the Catawiki website" time="37.623">
     <system-out><![CDATA[
-Scenario Outline: Search for an auction item                # src/test/resources/features/productSearching.feature:16
-Launching the browser and navigating to the Catawiki homepage
-Home Page Title: https://www.catawiki.com/en
-  ✔ Given User is on the Catawiki homepage                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
-User searches for: magazine
-  ✔ When User searches for "magazine"                       # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
-  ✔ And Verify the designated "magazine" page details       # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
-Total lots found on first Seearch Results Page:24
-  ✔ Then Click on Lot "3" in search results page and verify # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
-13:58:20.250 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Playboy magazines - 2000-2004
-13:58:20.255 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 38
-13:58:20.265 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: € 60
-  ✔ And Validate Lot details with spcified attributes       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
-Check:No
-13:58:25.292 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Warning: Explicit content Found !!! Going Back to Homepage...
+@Smoke_Test @Edge_Case_Test
+Scenario Outline: Search for an auction item with valid product name and verify the details # src/test/resources/features/productSearching.feature:20
+14:31:43.315 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:31:49.144 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:31:49.144 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: car
+  ✔ When User searches for "car"                                                            # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "car" page details                                            # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:31:55.230 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Total lots found on first Seearch Results Page:24
+  ✔ Then Click on Lot "3" in search results page and verify                                 # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
+14:31:55.984 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Stephen Newbury - The Car Design Yearbook 7 and The Car Design Yearbook 4 - 2008
+14:31:59.002 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 0
+14:31:59.021 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: 1
+  ✔ And Validate Lot details with spcified attributes                                       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
+14:32:03.044 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Explicit Content Warning Not Present...
 Proceeding
-  ✔ And Check for Age restricted content warning with "No"  # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+  ✔ And Check for Age restricted content warning with "No"                                  # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
 ]]></system-out>
-    <system-err><![CDATA[Feb 25, 2026 1:58:11 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err><![CDATA[Feb 26, 2026 2:31:42 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
+]]></system-err>
+  </testcase>
+  <testcase name="Search for an auction item with valid product name and verify the details #3" classname="feature to search for an item on the Catawiki website" time="35.958">
+    <system-out><![CDATA[
+@Smoke_Test @Edge_Case_Test
+Scenario Outline: Search for an auction item with valid product name and verify the details # src/test/resources/features/productSearching.feature:21
+14:32:21.108 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:32:24.289 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:32:24.289 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: Tintin
+  ✔ When User searches for "Tintin"                                                         # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "Tintin" page details                                         # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:32:30.529 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Total lots found on first Seearch Results Page:24
+  ✔ Then Click on Lot "1" in search results page and verify                                 # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
+14:32:31.284 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Tintin - Double mini-série - 10 Figurine Moulinsart 46206 - Limited edition
+14:32:34.297 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 24
+14:32:34.309 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: 190
+  ✔ And Validate Lot details with spcified attributes                                       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
+14:32:38.335 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Explicit Content Warning Not Present...
+Proceeding
+  ✔ And Check for Age restricted content warning with "No"                                  # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+]]></system-out>
+    <system-err><![CDATA[Feb 26, 2026 2:32:20 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
+]]></system-err>
+  </testcase>
+  <testcase name="Search for an auction item with valid product name and verify the details #4" classname="feature to search for an item on the Catawiki website" time="36.506">
+    <system-out><![CDATA[
+@Smoke_Test @Exploratory_Test
+Scenario Outline: Search for an auction item with valid product name and verify the details # src/test/resources/features/productSearching.feature:26
+14:32:56.847 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:33:02.676 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:33:02.683 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: magazine
+  ✔ When User searches for "magazine"                                                       # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "magazine" page details                                       # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:33:08.581 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Total lots found on first Seearch Results Page:24
+  ✔ Then Click on Lot "5" in search results page and verify                                 # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
+14:33:09.499 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Playboy magazines - 2002-2008
+14:33:12.512 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 30
+14:33:12.531 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: 110
+  ✔ And Validate Lot details with spcified attributes                                       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
+14:33:16.571 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Warning: Explicit content Found !!! Proceeding with Caution...
+Proceeding
+  ✔ And Check for Age restricted content warning with "Yes"                                 # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+]]></system-out>
+    <system-err><![CDATA[Feb 26, 2026 2:32:56 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
+]]></system-err>
+  </testcase>
+  <testcase name="Search for an auction item with valid product name and verify the details #5" classname="feature to search for an item on the Catawiki website" time="37.963">
+    <system-out><![CDATA[
+@Smoke_Test @Exploratory_Test
+Scenario Outline: Search for an auction item with valid product name and verify the details # src/test/resources/features/productSearching.feature:27
+14:33:33.239 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:33:39.050 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:33:39.050 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: magazine
+  ✔ When User searches for "magazine"                                                       # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "magazine" page details                                       # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:33:44.954 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Total lots found on first Seearch Results Page:24
+  ✔ Then Click on Lot "3" in search results page and verify                                 # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
+14:33:46.354 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Lot's Page Title: Playboy magazines - 2000-2004
+14:33:49.364 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Favorite Counter: 42
+14:33:49.375 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Current Bid Amount: 90
+  ✔ And Validate Lot details with spcified attributes                                       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
+14:33:53.408 &amp#27;[33mWARN &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Warning: Explicit content Found !!! Going Back to Homepage...
+Proceeding
+  ✔ And Check for Age restricted content warning with "No"                                  # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+]]></system-out>
+    <system-err><![CDATA[Feb 26, 2026 2:33:32 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
+]]></system-err>
+  </testcase>
+  <testcase name="Search for an auction item with Invalid product name and verify outcome #1" classname="feature to search for an item on the Catawiki website" time="10.512">
+    <failure message="Warning Message should be Visible for Invalid Search term" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Warning Message should be Visible for Invalid Search term
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at PageUtilities.verificationUtils.verifyElementPresenceInDOM(verificationUtils.java:38)
+	at StepDefinitions.SearchSteps.Validate_expected_outcome_and_verify_error_message(SearchSteps.java:144)
+	at ✽.Validate expected outcome and verify error message(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/productSearching.feature:34)
+]]></failure>
+    <system-out><![CDATA[
+@Smoke_Test @Negative_Test_Search
+Scenario Outline: Search for an auction item with Invalid product name and verify outcome # src/test/resources/features/productSearching.feature:39
+14:34:11.323 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:34:14.410 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:34:14.415 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: &%^$**$
+  ✔ When User searches for "&%^$**$"                                                      # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "&%^$**$" page details                                      # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:34:20.793 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Screenshot saved at: target/screenshots/InvalidProductTerm.png
+  ✘ Then Validate expected outcome and verify error message                               # StepDefinitions.SearchSteps.Validate_expected_outcome_and_verify_error_message()
+        java.lang.AssertionError: Warning Message should be Visible for Invalid Search term
+        	at org.junit.Assert.fail(Assert.java:89)
+        	at org.junit.Assert.assertTrue(Assert.java:42)
+        	at PageUtilities.verificationUtils.verifyElementPresenceInDOM(verificationUtils.java:38)
+        	at StepDefinitions.SearchSteps.Validate_expected_outcome_and_verify_error_message(SearchSteps.java:144)
+        	at ✽.Validate expected outcome and verify error message(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/productSearching.feature:34)
+]]></system-out>
+    <system-err><![CDATA[Feb 26, 2026 2:34:10 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
+]]></system-err>
+  </testcase>
+  <testcase name="Search for an auction item with Invalid product name and verify outcome #2" classname="feature to search for an item on the Catawiki website" time="17.367">
+    <system-out><![CDATA[
+@Smoke_Test @Negative_Test_Search
+Scenario Outline: Search for an auction item with Invalid product name and verify outcome # src/test/resources/features/productSearching.feature:40
+14:34:21.686 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Launching the browser and navigating to the Catawiki homepage
+14:34:29.774 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+14:34:29.777 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - User searches for: 9999abcd
+  ✔ When User searches for "9999abcd"                                                     # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+  ✔ And Verify the designated "9999abcd" page details                                     # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+14:34:36.155 &amp#27;[32mINFO &amp#27;[m &amp#27;[35mSearchSteps&amp#27;[m - Screenshot saved at: target/screenshots/InvalidProductTerm.png
+  ✔ Then Validate expected outcome and verify error message                               # StepDefinitions.SearchSteps.Validate_expected_outcome_and_verify_error_message()
+]]></system-out>
+    <system-err><![CDATA[Feb 26, 2026 2:34:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
 ]]></system-err>
   </testcase>

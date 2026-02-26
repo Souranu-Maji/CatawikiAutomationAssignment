@@ -1,4 +1,21 @@
 -------------------------------------------------------------------------------
 Test set: StepDefinitions.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 68.54 s -- in StepDefinitions.TestRunner
+Tests run: 10, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 234.4 s <<< FAILURE! -- in StepDefinitions.TestRunner
+feature to check language consistency in website while searching products.Search for auction item after switching language #3 -- Time elapsed: 6.631 s <<< ERROR!
+java.lang.IllegalArgumentException: No enum constant Enums.language.JAPANESE
+	at java.base/java.lang.Enum.valueOf(Enum.java:293)
+	at Enums.language.valueOf(language.java:3)
+	at Pages.homePage.validateChangedLanguageOnWebpage(homePage.java:75)
+	at Pages.homePage.changeUserLanguageAndValidateChange(homePage.java:71)
+	at StepDefinitions.SearchSteps.User_change_language_to_and_validate_the_language_change(SearchSteps.java:138)
+	at ✽.User change language to "JAPANESE" and validate the language change(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/languageAcceptance.feature:6)
+
+feature to search for an item on the Catawiki website.Search for an auction item with Invalid product name and verify outcome #1 -- Time elapsed: 10.51 s <<< FAILURE!
+java.lang.AssertionError: Warning Message should be Visible for Invalid Search term
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at PageUtilities.verificationUtils.verifyElementPresenceInDOM(verificationUtils.java:38)
+	at StepDefinitions.SearchSteps.Validate_expected_outcome_and_verify_error_message(SearchSteps.java:144)
+	at ✽.Validate expected outcome and verify error message(file:///Users/souranumaji/Documents/com.catawiki.automation/src/test/resources/features/productSearching.feature:34)
+
