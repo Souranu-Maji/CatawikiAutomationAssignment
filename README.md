@@ -2,6 +2,7 @@ Catawiki Automation
 A Selenium‑based test automation framework for Catawiki features.
 Built with Java, Maven, and Cucumber (BDD) to drive web browser
 scenarios against the Catawiki site.
+Created and Revised by - Souranu Maji
 
 🚀 Features
 * Page‑object pattern for maintainable UI interactions
@@ -66,6 +67,8 @@ Modify any base URLs or timeouts in page objects or utilities.
   ```
   mvn test -Dtest=TestRunner
   ```
+* During submission only @Positive_Test is added under CucumberOptions's tags [TestRunner.java]. Different tags can
+  be used like - @Smoke_Test, @Negative_Test inside CucumberOptions tags.
 
 After execution, results are available in cucumber-report.html and
 surefire-reports.

@@ -33,7 +33,7 @@ Feature: feature to search for an item on the Catawiki website
     And Verify the designated "<product_name>" page details
     Then Validate expected outcome for Invalid_Product_Term and verify "No exact results" message and screenshot 
 
-    @Negative_Test_Search
+    @Negative_Test
     Examples:
       | product_name |
       | &%^$**$      |
