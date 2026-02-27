@@ -85,3 +85,45 @@ surefire-reports.
 * Generate README.md file to maintain sections
 * Editing Comments to maintain consistency across the files
 
+TEST EXECUTION RESULT -> entire TestSuite ->
+TEST EXECUTION RESULT -> HappyPath/Positive Test
+```
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running StepDefinitions.TestRunner
+
+@Smoke_Test @Positive_Test
+Scenario Outline: Search for an auction item with valid product name and verify the details # src/test/resources/features/productSearching.feature:15
+Feb 27, 2026 5:26:47 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 145, returning the closest version; found: 144; Please update to a Selenium version that supports CDP version 145
+05:26:47.208 INFO  SearchSteps - Launching the browser and navigating to the Catawiki homepage
+05:26:50.399 INFO  SearchSteps - Catawiki HomePage Title Verified
+  ✔ Given User is on the Catawiki homepage                                                  # StepDefinitions.SearchSteps.User_is_on_the_Catawiki_homepage()
+05:26:50.401 INFO  homePage - User searches for: train
+  ✔ When User searches for "train"                                                          # StepDefinitions.SearchSteps.User_searches_for(java.lang.String)
+05:26:57.014 INFO  SearchSteps - Search Item Page Title:train
+  ✔ And Verify the designated "train" page details                                          # StepDefinitions.SearchSteps.Verify_the_designated_page_details(java.lang.String)
+05:26:57.030 INFO  SearchSteps - Total lots found on first Seearch Results Page:24
+  ✔ Then Click on Lot "2" in search results page and verify                                 # StepDefinitions.SearchSteps.Click_on_lot_in_search_results_page_and_verify(java.lang.String)
+05:26:58.092 INFO  SearchSteps - Lot's Page Title: Busch, Noch, Fleischmann H0 - Gravier, pierres, charbon, mouss, herbes.....HO. - Model train landscape (45)
+05:26:58.098 INFO  SearchSteps - Favorite Counter: 22
+05:26:58.108 INFO  SearchSteps - Current Bid Amount: 47
+  ✔ And Validate Lot details with spcified attributes                                       # StepDefinitions.SearchSteps.Validate_lot_details_with_spcified_attributes()
+05:27:02.141 INFO  lotProductPage - Explicit Content Warning Not Present...
+Proceeding
+  ✔ And Check for Age restricted content warning with "Yes"                                 # StepDefinitions.SearchSteps.Check_for_Age_restricted_content_warning(java.lang.String)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.58 s -- in StepDefinitions.TestRunner
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.180 s
+[INFO] Finished at: 2026-02-27T05:27:04Z
+[INFO] ------------------------------------------------------------------------
+```
+
