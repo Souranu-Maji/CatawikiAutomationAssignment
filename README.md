@@ -85,8 +85,8 @@ surefire-reports.
 * Generate README.md file to maintain sections
 * Editing Comments to maintain consistency across the files
 
-TEST EXECUTION RESULT -> entire TestSuite ->
-TEST EXECUTION RESULT -> HappyPath/Positive Test
+** TEST EXECUTION RESULT -> entire TestSuite (/Users/souranumaji/Documents/com.catawiki.automation/target/testEvidence/FullSuiteExexutionCucumberReport.html)
+** TEST EXECUTION RESULT -> HappyPath/Positive Test
 ```
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S

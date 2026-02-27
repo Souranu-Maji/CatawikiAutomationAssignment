@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import PageUtilities.takesScreenshotUtils;
 import PageUtilities.verificationUtils;
 import PageUtilities.waitUtils;
 
@@ -32,7 +30,8 @@ public class SearchSteps {
     
     WebDriver driver = null;
     private static final Logger log = LogManager.getLogger(SearchSteps.class);
-    private int sleepTimer = 2;
+    private final int sleepTimer = 2;
+
     homePage homePage;
     cookiesBar cookiesBar;
     searchResultsPage searchResultsPage;
@@ -90,17 +89,18 @@ public class SearchSteps {
         waitUtils.waitForElementToBeVisible(driver, searchResultsPage.searchResultsTitle);
         Thread.sleep(5000);
         // Validating the LOT page contains the search term in the Title
+        log.info("Search Item Page Title:" +searchResultsPage.searchResultsTitle.getText());
         Assert.assertTrue("Page title does not contain the search term", searchResultsPage.searchResultsTitle.getText().toLowerCase().contains(searchString.toLowerCase()));
     }
 
-
+    /**
+     * Clicks on the specified lot (by index) from the search results
+     * after verifying that results are available.
+     */
     @Then("Click on Lot {string} in search results page and verify")
     public void Click_on_lot_in_search_results_page_and_verify(String s) {
         log.info("Total lots found on first Seearch Results Page:" +searchResultsPage.getProductsCountPerPage());
-        /* 
-         * Validating more than one search result present in the search page
-         * If No matching product is found, then it should throw assertion error
-         */
+        // Ensure at least one result exists before attempting to click
         if(searchResultsPage.getProductsCountPerPage() > 0) {
             searchResultsPage.searchResultsItems.get(Integer.parseInt(s) - 1).click(); // Clicking the nth search product
         }
@@ -109,27 +109,33 @@ public class SearchSteps {
         }
     }
 
+    /**
+     * Validates key Lot details by ensuring required fields are non-empty
+     * and numeric values are non-negative, then logs the Page Title, Favorite Counter and Current Bid Amount.
+     */
     @Then("Validate Lot details with spcified attributes")
     public void Validate_lot_details_with_spcified_attributes() throws InterruptedException{
         waitUtils.waitForElementToBeClickable(driver, searchResultsPage.favoriteCounter);
-        /*
-         * implemented validation for Non-empty strings
-         * and validations for non-negative integer values
-         * and logging LoT Page Title, Favorite Counter, Current Bid Amount
-         */
         log.info("Lot's Page Title: " +verificationUtils.verificationForNonEmptyStrings(searchResultsPage.lotTitle));
-        Thread.sleep(3000);
         log.info("Favorite Counter: " +verificationUtils.verificationForNonNegativeValues(searchResultsPage.favoriteCounter));
         log.info("Current Bid Amount: " +verificationUtils.verificationForNonNegativeValues(
             verificationUtils.filterDigitsFromMixedString(searchResultsPage.currentBidAmount)));
 
+        // Pause for observation
         Thread.sleep(Duration.ofSeconds(sleepTimer));
     }
 
+    /**
+     * Handles the age-restricted content warning based on user permission
+     * and allows time for observation.
+     */
     @Then("Check for Age restricted content warning with {string}")
     public void Check_for_Age_restricted_content_warning(String permission) throws InterruptedException {
+        // Pause for observation
         Thread.sleep(Duration.ofSeconds(sleepTimer));
         lotProductPage.checkForAgeRestrictedContentWarning(permission);
+        
+        // Pause for observation
         Thread.sleep(Duration.ofSeconds(sleepTimer));
     }
 
@@ -138,12 +144,22 @@ public class SearchSteps {
         homePage.changeUserLanguageAndValidateChange(language);
     }
 
-    @Then("Validate expected outcome and verify error message")
-    public void Validate_expected_outcome_and_verify_error_message() throws InterruptedException, IOException {
-        takesScreenshotUtils.takeScreenshot(driver, "InvalidProductTerm");
-        verificationUtils.verifyElementPresenceInDOM(driver, "Warning Message should be Visible for Invalid Search term",By.xpath("//h1[contains(@class,'typography')]//following-sibling::p"));
-        Thread.sleep(Duration.ofSeconds(2));
+    @Then("Validate expected outcome for Invalid_Product_Term and verify {string} message and screenshot")
+    public void Validate_expected_outcome_for_Invalid_Product_Term_and_verify_message_and_screenshot(String warningMsg) throws IOException, InterruptedException {
+        verificationUtils.verifyMessageAndScreenshot(driver, "InvalidProductTerm", searchResultsPage.warningMsgBannerInvalidProduct, warningMsg);
     }
 
+    @Then("Validate expected outcome for Blank_Term and verify {string} message and screenshot")
+    public void Validate_expected_outcome_for_Blank_Term_and_verify_message_and_screenshot(String warnMsg) throws IOException, InterruptedException {
+        verificationUtils.verifyMessageAndScreenshot(driver, "BlankTerm", searchResultsPage.warningMsgBannerBlankTerm, warnMsg);
+    }
+
+    @Then("User navigates back to {string} search results page")
+    public void User_navigates_back_to_search_results_page(String searchTerm) {
+        lotProductPage.navigateToSearchResultsPage();
+        Assert.assertTrue(driver.getCurrentUrl().contains(searchTerm));
+    }
 
 }
+
+    

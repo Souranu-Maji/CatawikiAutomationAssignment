@@ -2,7 +2,6 @@ package PageUtilities;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -11,8 +10,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import StepDefinitions.SearchSteps;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 public class takesScreenshotUtils {
 
     WebDriver driver;
-    private static final Logger log = LogManager.getLogger(SearchSteps.class);
+    private static final Logger log = LogManager.getLogger(takesScreenshotUtils.class);
 
     public takesScreenshotUtils(WebDriver driver){
         this.driver = driver;

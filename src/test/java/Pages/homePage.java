@@ -16,12 +16,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Enums.language;
 import PageUtilities.waitUtils;
-import StepDefinitions.SearchSteps;
 
 public class homePage {
 
     WebDriver driver;
-    private static final Logger log = LogManager.getLogger(SearchSteps.class);
+    private static final Logger log = LogManager.getLogger(homePage.class);
     private final static String homePageTitle = "The Online Marketplace with Weekly Auctions";
     private language lang = null;
 
@@ -53,6 +52,11 @@ public class homePage {
     }
 
 
+    /**
+     * Searches for a product using the given search term.
+     *
+     * @param searchTerm product name or keyword to search
+     */
     public void searchForProductName(String searchTerm){
         log.info("User searches for: " + searchTerm);
         // Waiting for searchBar to be visible
@@ -60,27 +64,51 @@ public class homePage {
         searchButton.click();
     }
 
+    /**
+     * Changes the user's language from the website's language menu
+     * and validates that the change is applied.
+     *
+     * @param nativelang language to switch to (must match enum value)
+     */
     public void changeUserLanguageAndValidateChange(String nativelang){
-        languageBtn.click();
+        languageBtn.click(); // Open language selection dropdown
         WebDriverWait waitForLanguageDropdown = new WebDriverWait(driver, Duration.ofSeconds(5));
         waitForLanguageDropdown.until(ExpectedConditions.visibilityOf(languageDropdownMenu));
         if(verifyNativeLangSupportedByWebsite(nativelang)){
             lang = language.valueOf(nativelang);
+            // Select the language option using its display name in the DOM
             driver.findElement(By.xpath("//div[@role='menu']//button//p[contains(text(),'"+lang.getDisplayLanguage()+"')]")).click(); 
         }
         validateChangedLanguageOnWebpage(nativelang);
     }
 
+    /**
+     * Validates that the webpage language has been updated correctly
+     * by checking the URL and the language button text.
+     *
+     * @param nativelang language that should be applied (enum value)
+     */
     public void validateChangedLanguageOnWebpage(String nativelang){
-        language lang = language.valueOf(nativelang);
+        language lang = language.valueOf(nativelang); // Convert input to language enum
         log.info("WebURL changed to: "+driver.getCurrentUrl());
+        // Verify URL contains the expected language code
         Assert.assertTrue(driver.getCurrentUrl().contains(lang.getDisplayCode().toLowerCase()));
+
+        // Verify language button shows the correct language code
         Assert.assertTrue(languageBtnText.getText().equals(lang.getDisplayCode()));
 
     }
 
+    /**
+     * Checks if the given native language is supported by validating
+     * it against the `language` enum.
+     *
+     * @param nativeLanguage user-provided language string
+     * @return true if supported, false otherwise
+     */
     public boolean verifyNativeLangSupportedByWebsite(String nativeLanguage){
         boolean islanguageSupported = false;
+        // Attempt to convert the input string to a corresponding enum constant.
         try{
             if(language.valueOf(nativeLanguage) != null){
                 log.info("User has Selected "+language.valueOf(nativeLanguage));
@@ -89,6 +117,7 @@ public class homePage {
         }
         catch(IllegalArgumentException error)
         {
+        // Thrown when the input does not match any enum constant (unsupported language)
             log.warn("Native Language NOT supported by website");
         }
         catch(NullPointerException error2)
